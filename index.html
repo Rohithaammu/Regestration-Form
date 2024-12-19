@@ -1,84 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Registration Form</title>
-  <style>
-    body {
-      font-family: sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* General Reset and Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      width: 300px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+        /* Body Setup */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #E6E6FA, #D8B7DD, #D0A9F5);
+            animation: gradientAnimation 5s ease infinite;
+            background-size: 400% 400%;
+            color: #fff;
+        }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
+        /* Container for the Form */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+        }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    select,
-    input[type="tel"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
+        /* Form Styles */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
 
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+        h2 {
+            text-align: center;
+            color: #4B0082;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
 
-    input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-  </style>
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #4B0082;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #f4f4f9;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #A77BFF;
+            background-color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #A77BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #8C61D9;
+        }
+
+        /* Section for displaying the registered details */
+        .registered-details {
+            margin-top: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            color: #4B0082;
+        }
+
+        .registered-details h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Animation for Lavender Gradient */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Registration Form</h2>
+            <form id="registrationForm">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                </div>
+                <div class="input-group">
+                    <label for="hobbies">Hobbies</label>
+                    <input type="text" id="hobbies" name="hobbies" placeholder="Enter your hobbies" required>
+                </div>
+                <div class="input-group">
+                    <label for="interests">Interests</label>
+                    <input type="text" id="interests" name="interests" placeholder="Enter your interests" required>
+                </div>
+                <div class="input-group">
+                    <label for="country">Country of Birth</label>
+                    <input type="text" id="country" name="country" placeholder="Enter your country of birth" required>
+                </div>
+                <div class="input-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" placeholder="Enter your state" required>
+                </div>
+                <div class="input-group">
+                    <label for="goal">Goal</label>
+                    <input type="text" id="goal" name="goal" placeholder="Enter your goal" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <div id="confirmationMessage" style="display: none; color: green; text-align: center; margin-top: 20px;">
+                Form is Registered!
+            </div>
+        </div>
 
-  <div class="container">
-    <h2>Registration Form</h2>
-    <form>
-      <label for="fname">First Name:</label>
-      <input type="text" id="fname" name="fname" placeholder="Your first name..">
+        <div id="registeredDetails" class="registered-details" style="display: none;">
+            <h3>Registered Details:</h3>
+            <p><strong>Name:</strong> <span id="showName"></span></p>
+            <p><strong>Age:</strong> <span id="showAge"></span></p>
+            <p><strong>Hobbies:</strong> <span id="showHobbies"></span></p>
+            <p><strong>Interests:</strong> <span id="showInterests"></span></p>
+            <p><strong>Country of Birth:</strong> <span id="showCountry"></span></p>
+            <p><strong>State:</strong> <span id="showState"></span></p>
+            <p><strong>Goal:</strong> <span id="showGoal"></span></p>
+        </div>
+    </div>
 
-      <label for="lname">Last Name:</label>
-      <input type="text" id="lname" name="lname" placeholder="Your last name..">
+    <script>
+        // JavaScript to handle form submission and show details
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Your email..">
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
 
-      <label for="contact">Contact Number:</label>
-      <input type="tel" id="contact" name="contact" placeholder="Your contact number..">
+            // Get the values from the form inputs
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const hobbies = document.getElementById("hobbies").value;
+            const interests = document.getElementById("interests").value;
+            const country = document.getElementById("country").value;
+            const state = document.getElementById("state").value;
+            const goal = document.getElementById("goal").value;
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Your password..">
+            // Show the success message
+            document.getElementById("confirmationMessage").style.display = "block";
 
-      <label for="repassword">Re-type Password:</label>
-      <input type="password" id="repassword" name="repassword" placeholder="Re-type your password">
+            // Show the registered details
+            document.getElementById("showName").textContent = name;
+            document.getElementById("showAge").textContent = age;
+            document.getElementById("showHobbies").textContent = hobbies;
+            document.getElementById("showInterests").textContent = interests;
+            document.getElementById("showCountry").textContent = country;
+            document.getElementById("showState").textContent = state;
+            document.getElementById("showGoal").textContent = goal;
 
-      <label for="gender">Gender:</label>
-      <select id="gender" name="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
-
-      <input type="submit" value="Register">
-    </form>
-  </div>
-
+            // Show the details section
+            document.getElementById("registeredDetails").style.display = "block";
+        });
+    </script>
 </body>
 </html>
